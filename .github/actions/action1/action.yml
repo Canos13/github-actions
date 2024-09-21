@@ -6,4 +6,4 @@ runs:
 
   steps:
     - name: Hola mundo
-      runs: echo "Hola mundo de Actions"
+      run: echo "Hola mundo de Actions"
