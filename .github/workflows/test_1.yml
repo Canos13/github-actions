@@ -17,6 +17,15 @@ jobs:
     - name: primer test
       run: echo "Primer test"
 
+    - name: touch file
+      run: touch file.txt
+    
+    - name: Set text
+      run: echo "HOLA MUNDO" >> file.txt
+
+    - name: Read File
+      run: cat file.txt
+
   other:
     runs-on: ubuntu-latest
 
