@@ -13,3 +13,5 @@ jobs:
 
       - name: using Action 1
         uses: ./.github/actions/action1
+        with:
+          message: "Sergio Cano"
