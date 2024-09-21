@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      
+
   pull_request:
     branches:
       - master
@@ -16,3 +16,10 @@ jobs:
     steps:
     - name: primer test
       run: echo "Primer test"
+
+  other:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: LS
+      run: ls -al
