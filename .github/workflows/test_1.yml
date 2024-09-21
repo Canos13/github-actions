@@ -43,3 +43,12 @@ jobs:
     
     - name: Show node version
       run: node --version
+
+
+    - name: PHP
+      uses: shivammathur/setup-php@2.31.1
+      with:
+        php-version: '8.3'
+    
+    - name: Show PHP version
+      run: php --version
