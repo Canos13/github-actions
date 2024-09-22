@@ -56,6 +56,9 @@ jobs:
   services__:
     runs-on: ubuntu-latest
 
+    env:
+      MY__VAR: Mi varible de entorno
+
     services:
       mysql:
         image: mysql:5.7
@@ -71,4 +74,4 @@ jobs:
     
     steps:
       - name: Using A Service
-        run: ls
+        run: echo "$MY__VAR"
