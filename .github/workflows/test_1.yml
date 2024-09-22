@@ -74,4 +74,6 @@ jobs:
     
     steps:
       - name: Using A Service
-        run: echo "$MY__VAR"
+        env:
+          VAR__STEP: Var a nivel step
+        run: echo "$MY__VAR" y "$VAR__STEP"
