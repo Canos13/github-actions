@@ -1,6 +1,13 @@
 name: primer test
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
 
 jobs: 
   hola:
@@ -9,3 +16,64 @@ jobs:
     steps:
     - name: primer test
       run: echo "Primer test"
+
+    - name: touch file
+      run: touch file.txt
+    
+    - name: Set text
+      run: echo "HOLA MUNDO" >> file.txt
+
+    - name: Read File
+      run: cat file.txt
+
+  other:
+    runs-on: ubuntu-latest
+    needs: [hola]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+
+    - name: LS
+      run: ls -al
+
+    - name: Setup Node.js enviroments
+      uses: actions/setup-node@v4.0.3
+      with:
+        node-version: latest
+    
+    - name: Show node version
+      run: node --version
+
+
+    - name: PHP
+      uses: shivammathur/setup-php@2.31.1
+      with:
+        php-version: '8.3'
+    
+    - name: Show PHP version
+      run: php --version
+
+  services__:
+    runs-on: ubuntu-latest
+
+    env:
+      MY__VAR: Mi varible de entorno
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MTSQL_ROOT_PASSWORD: example
+        ports:
+          - 3306:3306
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+    
+    steps:
+      - name: Using A Service
+        env:
+          VAR__STEP: Var a nivel step
+        run: echo "$MY__VAR" y "$VAR__STEP"

@@ -1,0 +1,17 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: using Action 1
+        uses: ./.github/actions/action1
+        with:
+          message: "Sergio Cano"

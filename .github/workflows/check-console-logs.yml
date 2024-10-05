@@ -1,0 +1,23 @@
+name: Check for console.log statements
+
+on:
+  pull_request:
+    branches:
+      - preprod
+
+jobs:
+  check-console-logs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Search for console.log statements in JS/TS files
+        run: |
+          grep -nr "console.log" --include \*.{js,ts,jsx,tsx} . || true
+        continue-on-error: true
+
+      - name: Fail if console.log statements are found
+        if: success()
+        run: exit 1
